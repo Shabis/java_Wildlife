@@ -1,0 +1,15 @@
+<h3>Add a Sighting</h3>
+
+<form action="/sighting" method="post">
+  <label for="ranger">Name of Ranger:</label>
+  <input name="ranger" id="ranger" value="">
+  <label for="animalId">Animal Spotted:</label>
+    <select id="animalId" name="animalId">
+      #foreach ($animal in $animals)
+        <option value="$animal.getId()">$animal.getName()</option>
+      #end
+    </select>
+  <label for="location">Location Seen:</label>
+  <input name="location" id="location" value="">
+  <button class="btn btn-success" type="submit">Enter</button>
+</form>
