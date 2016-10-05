@@ -26,4 +26,35 @@ public class EndangeredAnimal extends Animal {
   public String getHealth() {
     return health;
   }
-}  
+  
+  public static List<EndangeredAnimal> all(boolean endangered) {
+      String sql = "SELECT * FROM animals WHERE endangered = true;";
+      try(Connection con = DB.sql2o.open()) {
+        return con.createQuery(sql)
+        .throwOnMappingFailure(false)
+        .executeAndFetch(EndangeredAnimal.class);
+      }
+    }
+
+  @Override
+  public void save() {
+    if (name.length() <= 0) {
+      throw new UnsupportedOperationException("Please enter the name of your animal");
+    } else if (health.length() <= 0) {
+      throw new UnsupportedOperationException("Please enter the health of your animal");
+    } else if (age <= 0) {
+      throw new UnsupportedOperationException("Please enter a valid age for your animal");
+      }
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO animals (name, endangered, health, age) VALUES (:name, :endangered, :health, :age);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("endangered", this.endangered)
+        .addParameter("health", this.health)
+        .addParameter("age", this.age)
+        .throwOnMappingFailure(false)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+}
