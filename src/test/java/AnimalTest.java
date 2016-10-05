@@ -39,3 +39,38 @@ public class AnimalTest {
   public void Animal_instantiatesWithEndangeredCorrectly_false() {
     assertEquals(false, testAnimal.getEndangered());
   }
+
+  @Test
+  public void Animal_returnsAllInstancesOfAnimal_true() {
+    assertEquals(true, Animal.all().get(0).equals(testAnimal));
+    assertEquals(true, Animal.all().get(1).equals(nextAnimal));
+  }
+
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Animal newAnimal = testAnimal;
+    assertEquals(newAnimal, testAnimal);
+  }
+
+  @Test
+  public void save_returnsTrueIfNamesAretheSame() {
+    assertTrue(Animal.all().get(0).equals(testAnimal));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals(testAnimal.getId(), savedAnimal.getId());
+  }
+
+  @Test
+  public void find_returnsAnimalWithSameId_nextAnimal() {
+    assertEquals(Animal.find(nextAnimal.getId()), nextAnimal);
+  }
+
+  @Test
+  public void update_updatesAnimalName_true() {
+    testAnimal.update("Bald Eagle");
+    assertEquals("Bald Eagle", Animal.find(testAnimal.getId()).getName());
+  }
+}
