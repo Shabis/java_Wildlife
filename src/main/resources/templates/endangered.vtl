@@ -1,0 +1,15 @@
+<h3>Add an Animal to the Database</h3>
+
+<form action="/endangered" method="post">
+  <label for="name">Name of Animal:</label>
+  <input name="name" id="name" value="">
+  <label for="age">Estimated Animal Age:</label>
+  <input name="age" id="age" value="">
+  <label for="health">Health Level:</label>
+    <select id="health" name="health">
+      <option value="HEALTH_LEVEL_3">Healthy</option>
+      <option value="HEALTH_LEVEL_2">injured</option>
+      <option value="HEALTH_LEVEL_1">unresponsive</option>
+    </select>
+  <button class="btn btn-success" type="submit">Enter</button>
+</form>
