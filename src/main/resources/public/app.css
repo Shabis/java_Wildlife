@@ -1,0 +1,32 @@
+.jumbotron {
+  background: rgba(255, 0, 0, 0.25);
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-image: url("/images/jumbotron.jpg");
+}
+
+body  {
+  text-align: center;
+  color: white;
+  background-image: url("/images/background.jpg");
+  background-size: 70%;
+  background-repeat: round;
+
+}
+
+input, select {
+  color: black;
+}
+
+.btn {
+  margin: 10px;
+  align-content: center;
+}
+
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
